@@ -1,0 +1,229 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+  color: var(--vscode-foreground);
+}
+
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 6px 12px;
+  background: var(--vscode-sideBar-background, var(--vscode-editor-background));
+  border-bottom: 1px solid var(--vscode-panel-border, transparent);
+  color: var(--vscode-descriptionForeground);
+  font-size: 0.9em;
+}
+
+#cells {
+  /* Generous bottom padding so the active input can scroll up far enough to
+     show the downward-opening autocomplete dropdown. */
+  padding: 6px 0 280px;
+}
+
+/* --- Cell ------------------------------------------------------------- */
+
+.cell {
+  padding: 4px 12px;
+}
+
+.cell.frozen {
+  border-left: 2px solid transparent;
+}
+
+.cell.frozen:hover {
+  border-left-color: var(--vscode-focusBorder);
+}
+
+.in-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.prompt {
+  flex: 0 0 auto;
+  min-width: 2.4em;
+  padding-top: 4px;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: 0.85em;
+  color: var(--vscode-descriptionForeground);
+  user-select: none;
+  text-align: right;
+}
+
+.field {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.field input {
+  width: 100%;
+  padding: 4px 8px;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: var(--vscode-editor-font-size, 13px);
+  color: var(--vscode-input-foreground);
+  background: var(--vscode-input-background);
+  border: 1px solid var(--vscode-input-border, transparent);
+  border-radius: 3px;
+  outline: none;
+}
+
+.field input:focus {
+  border-color: var(--vscode-focusBorder);
+}
+
+.field input::placeholder {
+  color: var(--vscode-input-placeholderForeground);
+}
+
+.in-code {
+  display: block;
+  flex: 1 1 auto;
+  padding: 4px 8px;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: var(--vscode-editor-font-size, 13px);
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--vscode-foreground);
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.in-code:hover {
+  background: var(--vscode-list-hoverBackground);
+}
+
+/* --- Output ----------------------------------------------------------- */
+
+.out {
+  margin: 4px 0 10px;
+  padding-left: calc(2.4em + 8px);
+}
+
+.out.pending {
+  padding-left: calc(2.4em + 8px);
+  color: var(--vscode-descriptionForeground);
+  font-style: italic;
+}
+
+.out-prompt {
+  display: block;
+  margin-bottom: 2px;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: 0.8em;
+  color: var(--vscode-descriptionForeground);
+  user-select: none;
+}
+
+.out.error .out-prompt {
+  color: var(--vscode-errorForeground);
+}
+
+.out-body {
+  margin: 0;
+  padding: 6px 10px;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: var(--vscode-editor-font-size, 13px);
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--vscode-textCodeBlock-background, var(--vscode-editor-background));
+  border: 1px solid var(--vscode-panel-border, transparent);
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.out.error .out-body {
+  color: var(--vscode-errorForeground);
+  background: transparent;
+  border-color: var(--vscode-inputValidation-errorBorder, var(--vscode-errorForeground));
+}
+
+.out-body.collapsible {
+  max-height: 60vh;
+}
+
+.out-body.collapsed {
+  max-height: 18em;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent);
+  mask-image: linear-gradient(to bottom, black 70%, transparent);
+}
+
+.out-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 5px;
+  font-size: 0.85em;
+}
+
+.out-link {
+  color: var(--vscode-textLink-foreground);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.out-link:hover {
+  text-decoration: underline;
+  color: var(--vscode-textLink-activeForeground);
+}
+
+.out-note {
+  color: var(--vscode-descriptionForeground);
+}
+
+/* --- Autocomplete dropdown (opens upward) ----------------------------- */
+
+.suggestions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  max-height: 240px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background: var(--vscode-editorSuggestWidget-background, var(--vscode-editorWidget-background));
+  border: 1px solid var(--vscode-editorSuggestWidget-border, var(--vscode-editorWidget-border));
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  z-index: 10;
+}
+
+.suggestions li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 22px;
+  padding: 0 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.suggestions li .label {
+  font-family: var(--vscode-editor-font-family, monospace);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestions li .detail {
+  flex: 0 0 auto;
+  color: var(--vscode-descriptionForeground);
+  font-size: 0.85em;
+}
+
+.suggestions li.active {
+  color: var(--vscode-editorSuggestWidget-selectedForeground, var(--vscode-list-activeSelectionForeground));
+  background: var(--vscode-editorSuggestWidget-selectedBackground, var(--vscode-list-activeSelectionBackground));
+}

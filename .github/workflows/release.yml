@@ -1,0 +1,41 @@
+name: Release
+
+# Publish to Open VSX whenever a version tag is pushed.
+#   git tag v0.1.0 && git push origin v0.1.0
+#
+# Required repository secret (Settings → Secrets and variables → Actions):
+#   OVSX_PAT  – Open VSX access token (https://open-vsx.org → Settings → Access Tokens)
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile
+        run: npm run compile
+
+      - name: Package VSIX
+        run: npx @vscode/vsce package -o json-explorer.vsix
+
+      - name: Publish to Open VSX
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+        run: npx ovsx publish json-explorer.vsix -p "$OVSX_PAT"
+
+      - name: Attach VSIX to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: json-explorer.vsix

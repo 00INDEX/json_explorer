@@ -1,0 +1,122 @@
+{
+  "name": "json-explorer",
+  "displayName": "Json Explorer",
+  "description": "Run jq queries against the open JSON file with field autocomplete, and view the result in a new tab.",
+  "version": "0.1.0",
+  "publisher": "00index",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/00INDEX/json_explorer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/00INDEX/json_explorer/issues"
+  },
+  "homepage": "https://github.com/00INDEX/json_explorer#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "extensionKind": [
+    "workspace"
+  ],
+  "galleryBanner": {
+    "color": "#4f56e8",
+    "theme": "dark"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "json",
+    "jq",
+    "query",
+    "explorer",
+    "unescape"
+  ],
+  "activationEvents": [
+    "onLanguage:json",
+    "onLanguage:jsonc"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "panel": [
+        {
+          "id": "jsonExplorer",
+          "title": "Json Explorer",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "jsonExplorer": [
+        {
+          "id": "jsonExplorer.inputView",
+          "name": "Query",
+          "type": "webview",
+          "contextualTitle": "Json Explorer"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "jsonExplorer.focusInput",
+        "title": "Json Explorer: Focus Query Input"
+      }
+    ],
+    "configuration": {
+      "title": "Json Explorer",
+      "properties": {
+        "jsonExplorer.jqPath": {
+          "type": "string",
+          "default": "jq",
+          "description": "Path to the jq executable. Use an absolute path if jq is not on your PATH."
+        },
+        "jsonExplorer.rawOutput": {
+          "type": "boolean",
+          "default": true,
+          "description": "Pass -r to jq so string results are printed raw (unescaped), which is ideal for reading escaped text."
+        },
+        "jsonExplorer.extraArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Additional arguments passed to jq before the filter (e.g. [\"-S\"] to sort keys)."
+        },
+        "jsonExplorer.openBeside": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open the result document beside the source file instead of replacing it."
+        },
+        "jsonExplorer.autoReveal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically reveal the Json Explorer panel when a JSON file becomes active."
+        },
+        "jsonExplorer.maxCompletionItems": {
+          "type": "number",
+          "default": 200,
+          "description": "Maximum number of field suggestions to show in the autocomplete dropdown."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package -o json-explorer.vsix",
+    "publish": "ovsx publish json-explorer.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.0",
+    "ovsx": "^0.10.0",
+    "typescript": "^5.4.0"
+  }
+}

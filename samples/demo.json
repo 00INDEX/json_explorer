@@ -1,0 +1,20 @@
+{
+  "title": "Json Explorer demo",
+  "content": "Line one.\nLine two with \"quotes\" and a\ttab.\nLine three.",
+  "author": {
+    "name": "Ada",
+    "email": "ada@example.com",
+    "roles": ["admin", "editor"]
+  },
+  "stats": {
+    "views": 1280,
+    "likes": 42,
+    "published": true
+  },
+  "items": [
+    { "id": 1, "label": "alpha", "score": 9.5 },
+    { "id": 2, "label": "beta", "score": 7.1 },
+    { "id": 3, "label": "gamma", "score": 8.8 }
+  ],
+  "weird key!": "needs bracket access"
+}
