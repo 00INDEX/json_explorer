@@ -11,6 +11,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -29,6 +32,11 @@ jobs:
 
       - name: Package VSIX
         run: npx @vscode/vsce package -o json-explorer.vsix
+
+      - name: Ensure Open VSX namespace exists
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+        run: npx ovsx create-namespace 00index -p "$OVSX_PAT" || true
 
       - name: Publish to Open VSX
         env:
