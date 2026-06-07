@@ -12,9 +12,7 @@ press **Enter**, and the result opens in a new tab. String fields are printed **
 
 ## Demo
 
-<video src="https://github.com/00INDEX/json_explorer/raw/main/media/demo.mp4" controls width="100%"></video>
-
-> If the player doesn't load, [watch the demo here](https://github.com/00INDEX/json_explorer/raw/main/media/demo.mp4).
+![Json Explorer demo](https://github.com/00INDEX/json_explorer/raw/main/media/demo.gif)
 
 ## Install
 
