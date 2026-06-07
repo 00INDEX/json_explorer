@@ -10,6 +10,12 @@ Open a JSON file, type a jq filter in the docked **Json Explorer** panel at the 
 press **Enter**, and the result opens in a new tab. String fields are printed **raw**
 (`jq -r`) so escaped text becomes readable — no more `\n`, `\"` and `\t` clutter.
 
+## Demo
+
+<video src="https://github.com/00INDEX/json_explorer/raw/main/media/demo.mp4" controls width="100%"></video>
+
+> If the player doesn't load, [watch the demo here](https://github.com/00INDEX/json_explorer/raw/main/media/demo.mp4).
+
 ## Install
 
 - **VSCodium / Cursor / Gitpod / Theia** (Open VSX is their default registry):
