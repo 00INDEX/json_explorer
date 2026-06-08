@@ -2,7 +2,7 @@
   "name": "json-explorer",
   "displayName": "Json Explorer",
   "description": "Run jq queries against the open JSON file with field autocomplete, and view the result in a new tab.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "00index",
   "license": "MIT",
   "icon": "media/icon.png",
