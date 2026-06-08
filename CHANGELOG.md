@@ -2,6 +2,12 @@
 
 All notable changes to the **Json Explorer** extension are documented here.
 
+## [0.1.2] - 2026-06-08
+
+### Changed
+
+- Now also published to the VS Code Marketplace (in addition to Open VSX).
+
 ## [0.1.1] - 2026-06-08
 
 ### Changed
