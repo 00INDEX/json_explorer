@@ -1,7 +1,8 @@
 # Json Explorer
 
-[![Open VSX Version](https://img.shields.io/open-vsx/v/00index/json-explorer?label=Open%20VSX&color=4f56e8)](https://open-vsx.org/extension/00index/json-explorer)
-[![Open VSX Downloads](https://img.shields.io/open-vsx/dt/00index/json-explorer?label=downloads&color=4f56e8)](https://open-vsx.org/extension/00index/json-explorer)
+[![VS Marketplace](https://img.shields.io/visual-studio-marketplace/v/00index.json-notebook?label=VS%20Marketplace&color=4f56e8)](https://marketplace.visualstudio.com/items?itemName=00index.json-notebook)
+[![Open VSX Version](https://img.shields.io/open-vsx/v/00index/json-notebook?label=Open%20VSX&color=4f56e8)](https://open-vsx.org/extension/00index/json-notebook)
+[![Open VSX Downloads](https://img.shields.io/open-vsx/dt/00index/json-notebook?label=downloads&color=4f56e8)](https://open-vsx.org/extension/00index/json-notebook)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 A VS Code extension for quickly exploring JSON files with [`jq`](https://stedolan.github.io/jq/).
@@ -16,11 +17,11 @@ press **Enter**, and the result opens in a new tab. String fields are printed **
 
 ## Install
 
-- **VSCodium / Cursor / Gitpod / Theia** (Open VSX is their default registry):
-  search **"Json Explorer"** in the Extensions view, or visit the
-  [Open VSX page](https://open-vsx.org/extension/00index/json-explorer).
-- **Stock VS Code** (uses the Microsoft Marketplace, which does not carry Open VSX
-  extensions): download the `.vsix` from the
+- **VS Code**: search **"Json Explorer"** in the Extensions view, or open the
+  [Marketplace page](https://marketplace.visualstudio.com/items?itemName=00index.json-notebook).
+- **VSCodium / Cursor / Gitpod / Theia** (Open VSX): search **"Json Explorer"**, or visit the
+  [Open VSX page](https://open-vsx.org/extension/00index/json-notebook).
+- **Manual**: download the `.vsix` from the
   [latest GitHub release](https://github.com/00INDEX/json_explorer/releases/latest)
   and run **Extensions: Install from VSIX…** from the Command Palette.
 

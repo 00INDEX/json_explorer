@@ -31,7 +31,7 @@ npm run package                                  # builds json-explorer.vsix
 npx ovsx publish json-explorer.vsix -p <OVSX_TOKEN>
 ```
 
-Verify at: https://open-vsx.org/extension/00index/json-explorer
+Verify at: https://open-vsx.org/extension/00index/json-notebook
 
 ## 4. Publish via GitHub Actions (later releases)
 

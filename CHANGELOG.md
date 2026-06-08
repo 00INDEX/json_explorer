@@ -2,6 +2,14 @@
 
 All notable changes to the **Json Explorer** extension are documented here.
 
+## [0.1.3] - 2026-06-08
+
+### Changed
+
+- Renamed the extension id to `00index.json-notebook` (the `json-explorer`
+  name was already taken on the VS Code Marketplace). The display name remains
+  **Json Explorer**.
+
 ## [0.1.2] - 2026-06-08
 
 ### Changed
