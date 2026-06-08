@@ -1,8 +1,8 @@
 {
   "name": "json-notebook",
-  "displayName": "Json Explorer",
+  "displayName": "JSON Notebook",
   "description": "Run jq queries against the open JSON file with field autocomplete, and view the result in a new tab.",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "publisher": "00index",
   "license": "MIT",
   "icon": "media/icon.png",
