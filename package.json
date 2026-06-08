@@ -2,7 +2,7 @@
   "name": "json-notebook",
   "displayName": "JSON Notebook",
   "description": "Run jq queries against the open JSON file with field autocomplete, and view the result in a new tab.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "publisher": "00index",
   "license": "MIT",
   "icon": "media/icon.png",
@@ -44,42 +44,42 @@
     "viewsContainers": {
       "panel": [
         {
-          "id": "jsonExplorer",
-          "title": "Json Explorer",
+          "id": "jsonNotebook",
+          "title": "JSON Notebook",
           "icon": "media/icon.svg"
         }
       ]
     },
     "views": {
-      "jsonExplorer": [
+      "jsonNotebook": [
         {
-          "id": "jsonExplorer.inputView",
+          "id": "jsonNotebook.inputView",
           "name": "Query",
           "type": "webview",
-          "contextualTitle": "Json Explorer"
+          "contextualTitle": "JSON Notebook"
         }
       ]
     },
     "commands": [
       {
-        "command": "jsonExplorer.focusInput",
-        "title": "Json Explorer: Focus Query Input"
+        "command": "jsonNotebook.focusInput",
+        "title": "JSON Notebook: Focus Query Input"
       }
     ],
     "configuration": {
-      "title": "Json Explorer",
+      "title": "JSON Notebook",
       "properties": {
-        "jsonExplorer.jqPath": {
+        "jsonNotebook.jqPath": {
           "type": "string",
           "default": "jq",
           "description": "Path to the jq executable. Use an absolute path if jq is not on your PATH."
         },
-        "jsonExplorer.rawOutput": {
+        "jsonNotebook.rawOutput": {
           "type": "boolean",
           "default": true,
           "description": "Pass -r to jq so string results are printed raw (unescaped), which is ideal for reading escaped text."
         },
-        "jsonExplorer.extraArgs": {
+        "jsonNotebook.extraArgs": {
           "type": "array",
           "items": {
             "type": "string"
@@ -87,17 +87,17 @@
           "default": [],
           "description": "Additional arguments passed to jq before the filter (e.g. [\"-S\"] to sort keys)."
         },
-        "jsonExplorer.openBeside": {
+        "jsonNotebook.openBeside": {
           "type": "boolean",
           "default": true,
           "description": "Open the result document beside the source file instead of replacing it."
         },
-        "jsonExplorer.autoReveal": {
+        "jsonNotebook.autoReveal": {
           "type": "boolean",
           "default": true,
-          "description": "Automatically reveal the Json Explorer panel when a JSON file becomes active."
+          "description": "Automatically reveal the JSON Notebook panel when a JSON file becomes active."
         },
-        "jsonExplorer.maxCompletionItems": {
+        "jsonNotebook.maxCompletionItems": {
           "type": "number",
           "default": 200,
           "description": "Maximum number of field suggestions to show in the autocomplete dropdown."

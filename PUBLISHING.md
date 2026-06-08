@@ -1,4 +1,4 @@
-# Publishing Json Explorer (Open VSX)
+# Publishing JSON Notebook (Open VSX)
 
 This extension is published to **Open VSX** (https://open-vsx.org), the open
 registry used by VSCodium, Cursor, Gitpod, Eclipse Theia, and others.
@@ -53,7 +53,7 @@ the `.vsix` to a GitHub release.
 
 ## Installing the result
 
-- In VSCodium / Cursor: search "Json Explorer" in the Extensions view (Open VSX
+- In VSCodium / Cursor: search "JSON Notebook" in the Extensions view (Open VSX
   is their default registry).
 - In regular VS Code (which uses the MS Marketplace, not Open VSX): download the
   `.vsix` from the GitHub release and run **Extensions: Install from VSIX…**.
@@ -61,7 +61,7 @@ the `.vsix` to a GitHub release.
 ## Notes
 
 - **jq** must be installed on the user's machine (on `PATH`, or set
-  `jsonExplorer.jqPath`). The README documents this and the extension shows a
+  `jsonNotebook.jqPath`). The README documents this and the extension shows a
   friendly error if jq is missing.
 - Bump `package.json` → `version` for every publish; the registry rejects
   re-publishing the same version.

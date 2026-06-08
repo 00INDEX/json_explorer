@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { computeCompletions } from './completions';
 import { runJq, JqOptions } from './jq';
 
-const VIEW_ID = 'jsonExplorer.inputView';
+const VIEW_ID = 'jsonNotebook.inputView';
 // Beyond this many characters we stop sending the result inline and only offer
 // the "open in new document" link, to keep the webview responsive.
 const MAX_INLINE_CHARS = 100_000;
@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('jsonExplorer.focusInput', () => {
+    vscode.commands.registerCommand('jsonNotebook.focusInput', () => {
       vscode.commands.executeCommand(`${VIEW_ID}.focus`);
     })
   );
@@ -80,7 +80,7 @@ class QueryViewProvider implements vscode.WebviewViewProvider {
         this.targetDoc = editor!.document;
         this.cache = undefined;
       }
-      const cfg = vscode.workspace.getConfiguration('jsonExplorer');
+      const cfg = vscode.workspace.getConfiguration('jsonNotebook');
       // Reveal the panel the first time, but don't keep stealing focus on every
       // editor switch once it's already visible.
       if (cfg.get<boolean>('autoReveal', true) && !this.view?.visible) {
@@ -162,7 +162,7 @@ class QueryViewProvider implements vscode.WebviewViewProvider {
       return;
     }
     const max = vscode.workspace
-      .getConfiguration('jsonExplorer')
+      .getConfiguration('jsonNotebook')
       .get<number>('maxCompletionItems', 200);
     const result = computeCompletions(parsed.value, text, caret, max);
     this.view.webview.postMessage({ type: 'completions', ...result });
@@ -181,7 +181,7 @@ class QueryViewProvider implements vscode.WebviewViewProvider {
       return;
     }
     const filter = query.trim() === '' ? '.' : query;
-    const cfg = vscode.workspace.getConfiguration('jsonExplorer');
+    const cfg = vscode.workspace.getConfiguration('jsonNotebook');
     const opts: JqOptions = {
       jqPath: cfg.get<string>('jqPath', 'jq'),
       rawOutput: cfg.get<boolean>('rawOutput', true),
@@ -228,7 +228,7 @@ class QueryViewProvider implements vscode.WebviewViewProvider {
   private async handleOpenDoc(cellId: number) {
     const content = this.results.get(cellId);
     if (content === undefined) return;
-    const cfg = vscode.workspace.getConfiguration('jsonExplorer');
+    const cfg = vscode.workspace.getConfiguration('jsonNotebook');
     const rawOutput = cfg.get<boolean>('rawOutput', true);
     const language = detectLanguage(content, rawOutput);
     const document = await vscode.workspace.openTextDocument({ content, language });

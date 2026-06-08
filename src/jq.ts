@@ -39,7 +39,7 @@ export function runJq(filter: string, input: string, opts: JqOptions): Promise<J
       if (err.code === 'ENOENT') {
         reject(
           new Error(
-            `Could not find jq at "${opts.jqPath}". Install jq or set "jsonExplorer.jqPath" in settings.`
+            `Could not find jq at "${opts.jqPath}". Install jq or set "jsonNotebook.jqPath" in settings.`
           )
         );
       } else {

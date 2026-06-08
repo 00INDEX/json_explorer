@@ -2,6 +2,15 @@
 
 All notable changes to the **Json Explorer** extension are documented here.
 
+## [0.1.5] - 2026-06-08
+
+### Changed
+
+- Full rebrand to **JSON Notebook**: panel title, command, and configuration
+  labels now read "JSON Notebook".
+- Settings keys are renamed from `jsonExplorer.*` to `jsonNotebook.*` (re-set
+  any customised options under the new keys).
+
 ## [0.1.4] - 2026-06-08
 
 ### Changed
