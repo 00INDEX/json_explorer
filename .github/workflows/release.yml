@@ -1,10 +1,13 @@
 name: Release
 
-# Publish to Open VSX whenever a version tag is pushed.
+# Publish to Open VSX (and the VS Code Marketplace, if configured) whenever a
+# version tag is pushed:
 #   git tag v0.1.0 && git push origin v0.1.0
 #
-# Required repository secret (Settings → Secrets and variables → Actions):
+# Repository secrets (Settings → Secrets and variables → Actions):
 #   OVSX_PAT  – Open VSX access token (https://open-vsx.org → Settings → Access Tokens)
+#   VSCE_PAT  – (optional) Azure DevOps PAT with Marketplace→Manage scope. If unset,
+#               the VS Code Marketplace step is skipped automatically.
 
 on:
   push:
@@ -42,6 +45,12 @@ jobs:
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
         run: npx ovsx publish json-explorer.vsix -p "$OVSX_PAT"
+
+      - name: Publish to VS Code Marketplace
+        if: env.VSCE_PAT != ''
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: npx @vscode/vsce publish --packagePath json-explorer.vsix -p "$VSCE_PAT" --skip-duplicate
 
       - name: Attach VSIX to GitHub Release
         uses: softprops/action-gh-release@v2
